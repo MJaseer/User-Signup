@@ -1,0 +1,41 @@
+<div class="login-box" [formGroup]="registerForm" (ngSubmit)="register()">
+    <h2>Sign up</h2>
+    <form>
+  
+      <div class="user-box">
+        
+        <input type="text"  formControlName="name" [class.invalid]="registerForm.get('name')?.invalid && 
+        registerForm.get('name')?.dirty || registerForm.get('name')?.touched || isSubmitted">
+        <label>Name</label>
+        <span class="text-danger" *ngIf="registerForm.get('name')?.invalid &&
+         (registerForm.get('name')?.dirty || registerForm.get('name')?.touched ||
+          isSubmitted)">Name is Required</span>
+      </div>
+      <div class="user-box">
+        
+        <input type="text" formControlName="email" >
+        <label>E-mail</label>
+        <span class="text-danger" *ngIf="registerForm.get('email')?.invalid &&
+         (registerForm.get('email')?.dirty || registerForm.get('email')?.touched ||
+          isSubmitted)">E-mail is required</span>
+      </div>
+      <div class="user-box">
+
+        <input type="password" formControlName='password' >
+        <label>Password</label>
+        <span class="text-danger" *ngIf="registerForm.get('password')?.invalid && 
+        (registerForm.get('password')?.dirty || registerForm.get('password')?.touched 
+        ||isSubmitted)">Password is required</span>
+      </div>
+      <a><button class="btn" type="submit">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Submit
+        </button></a>
+    </form>
+    <div class="d-flex justify-content-end">
+        <a routerLink="/login" class="btn btn-dark">Login</a>
+      </div>
+  </div>

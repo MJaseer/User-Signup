@@ -1,0 +1,39 @@
+<div class="login-box" (ngSubmit)="login()" [formGroup]=loginForm>
+  <h2>Login</h2>
+  <form>
+
+    <div class="user-box">
+
+      <input type="text" formControlName="email" [class.invalid]="loginForm.get('email')?.invalid &&
+      (loginForm.get('email')?.dirty || loginForm.get('email')?.touched ||isSubmitted)">
+      <label>E-mail</label>
+      <span class="text-danger" *ngIf="loginForm.get('email')?.invalid &&
+      (loginForm.get('email')?.dirty || loginForm.get('email')?.touched ||isSubmitted)">This Field is Required</span>
+
+    </div>
+
+    <div class="user-box">
+      <input type="password" formControlName='password' [class.invalid]="loginForm.get('password')?.invalid &&
+      (loginForm.get('password')?.dirty || loginForm.get('password')?.touched||isSubmitted)">
+      <label>Password</label>
+      <span class="text-danger mb-3" *ngIf="loginForm.get('password')?.invalid &&
+      (loginForm.get('password')?.dirty || loginForm.get('password')?.touched||isSubmitted)">This Field is
+        Required</span>
+    </div>
+    <div class="user-box">
+      <select formControlName='roleId'>
+        <option class="" *ngFor="let role of roles" [ngValue]="role.id">{{role.title}}</option>
+      </select>
+    </div>
+    <a><button class="btn" type="submit">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Submit
+      </button></a>
+  </form>
+  <div class="d-flex justify-content-end">
+    <a routerLink="/signup" class="btn btn-dark">Sign Up</a>
+  </div>
+</div>
